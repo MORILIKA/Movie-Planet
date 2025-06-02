@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -22,7 +21,7 @@ interface Movie {
 	vote_average: number;
 }
 
-export default function Search() {
+export default function SearchPage() {
 	// 取得 keyword
 	const searchParams = useSearchParams();
 	const keyword = useMemo(() => {
@@ -78,27 +77,13 @@ export default function Search() {
 				return acc;
 			}, []) ?? []
 		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data]);
 
 	const isValidatingRef = useRef(isValidating);
 	useEffect(() => {
 		isValidatingRef.current = isValidating;
 	}, [isValidating]);
-
-	const handlerScroll = throttle(() => {
-		const scrollEl = document.getElementById("global-scroll-container");
-		const scrollTop: number = scrollEl?.scrollTop || 0;
-		const scrollHeight: number = scrollEl?.scrollHeight || 0;
-		const clientHeight: number = scrollEl?.clientHeight || 0;
-		if (
-			scrollTop + clientHeight >= scrollHeight - 100 &&
-			!isValidatingRef.current &&
-			!isEnd.current
-		) {
-			setSize((prevSize) => prevSize + 1);
-		}
-		setIsScrolledToTopButtonVisible(scrollTop >= clientHeight);
-	}, 200);
 
 	const [isScrolledToTopButtonVisible, setIsScrolledToTopButtonVisible] =
 		useState(false);
@@ -114,14 +99,30 @@ export default function Search() {
 		clearCache();
 		isEnd.current = false;
 		setSize(1);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [keyword]);
 
 	useEffect(() => {
 		const scrollEl = document.getElementById("global-scroll-container");
+		const handlerScroll = throttle(() => {
+			const scrollEl = document.getElementById("global-scroll-container");
+			const scrollTop: number = scrollEl?.scrollTop || 0;
+			const scrollHeight: number = scrollEl?.scrollHeight || 0;
+			const clientHeight: number = scrollEl?.clientHeight || 0;
+			if (
+				scrollTop + clientHeight >= scrollHeight - 100 &&
+				!isValidatingRef.current &&
+				!isEnd.current
+			) {
+				setSize((prevSize) => prevSize + 1);
+			}
+			setIsScrolledToTopButtonVisible(scrollTop >= clientHeight);
+		}, 200);
 		scrollEl?.addEventListener("scroll", handlerScroll);
 		return () => {
 			scrollEl?.removeEventListener("scroll", handlerScroll);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const goToDetailPage = (movieId: number) => {

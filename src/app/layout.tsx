@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-
+import { Suspense } from "react";
 import "./globals.css";
 import "./globalIcon.css";
 import { Providers } from "./providers";
@@ -22,8 +22,7 @@ export default function RootLayout({
 				<div className="h-[100vh] overflow-y-auto" id="global-scroll-container">
 					<Providers>
 						<Navbar />
-
-						{children}
+						<Suspense>{children}</Suspense>
 					</Providers>
 				</div>
 			</body>

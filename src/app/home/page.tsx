@@ -22,7 +22,7 @@ interface Movie {
 	poster_path: string;
 	vote_average: number;
 }
-export default function HomePage() {
+export default function IndexPage() {
 	const router = useRouter();
 	const { data, isLoading } = useSWR(
 		`/movie/popular?page=1&language=zh-TW&include_adult=false`,
@@ -52,7 +52,7 @@ export default function HomePage() {
 			return movies[Math.floor(Math.random() * movies.length)];
 		}
 		return null;
-	}, [movies]);
+	}, [movies, isLoading]);
 
 	const carouselOptions: EmblaOptionsType = {
 		dragFree: true,

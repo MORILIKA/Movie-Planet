@@ -41,18 +41,17 @@ export default function Nav() {
 	const router = useRouter();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const handlerScroll = throttle(() => {
-		const scrollEl = document.getElementById("global-scroll-container");
-		const scrollTop: number = scrollEl?.scrollTop || 0;
-		const navHeight = document.getElementById("navbar")?.clientHeight || 0;
-		// 當滾動超過 nav高度時，顯示背景
-		setIsNavBgShow(scrollTop > navHeight);
-	}, 500);
-
 	const [isNavBgShow, setIsNavBgShow] = useState(false);
 
 	useEffect(() => {
 		const scrollEl = document.getElementById("global-scroll-container");
+		const handlerScroll = throttle(() => {
+			const scrollEl = document.getElementById("global-scroll-container");
+			const scrollTop: number = scrollEl?.scrollTop || 0;
+			const navHeight = document.getElementById("navbar")?.clientHeight || 0;
+			// 當滾動超過 nav高度時，顯示背景
+			setIsNavBgShow(scrollTop > navHeight);
+		}, 500);
 		scrollEl?.addEventListener("scroll", handlerScroll);
 		return () => {
 			scrollEl?.removeEventListener("scroll", handlerScroll);
