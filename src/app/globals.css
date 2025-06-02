@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	font-size: 16px;
+}
+h1 {
+	font-size: 2rem;
+	font-weight: 700;
+}
+h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+h3 {
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+h4 {
+	font-size: 1rem;
+	font-weight: 500;
+}
+h5 {
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+.text-shadow {
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.single-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+.double-ellipsis {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+/* carousel style */
+.embla {
+	overflow: hidden;
+	position: relative;
+}
+.embla__container {
+	display: flex;
+}
+
+.embla__button {
+	width: 1rem;
+	position: absolute;
+	height: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.embla__button--prev {
+	left: -2rem;
+}
+.embla__button--prev:disabled,
+.embla__button--next:disabled {
+	opacity: 0;
+}
+.embla__button--next {
+	right: -2rem;
+}
+
+.movie-carousel .embla__viewport.is-draggable {
+	cursor: grab;
+}
+.movie-carousel .embla__slide {
+	flex: 0 0 16.66666%; /* Slide covers 50% of the viewport */
+	min-width: 0;
+}
+@media (max-width: 1024px) {
+	.movie-carousel .embla__slide {
+		flex: 0 0 25%; /* Slide covers 25% of the viewport */
+	}
+}
+@media (max-width: 768px) {
+	.movie-carousel .embla__slide {
+		flex: 0 0 33.33333%; /* Slide covers 33.333% of the viewport */
+	}
+}
+
+@media (max-width: 500px) {
+	.movie-carousel .embla__slide {
+		flex: 0 0 50%; /* Slide covers 50% of the viewport */
+	}
+	.embla__button--prev {
+		left: 0;
+	}
+	.embla__button--next {
+		right: 0;
+	}
+}
