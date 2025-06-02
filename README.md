@@ -9,7 +9,7 @@ npm install
 啟動
 
 ```bash
-npm install
+npm run dev
 ```
 
 ## Development Notes
