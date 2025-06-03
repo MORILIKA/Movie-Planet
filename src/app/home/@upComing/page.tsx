@@ -20,13 +20,12 @@ interface Movie {
 }
 export default function UpComing() {
 	const router = useRouter();
-	const { data, isLoading } = useSWR(
-		`/movie/upcoming?page=1&language=zh-TW&include_adult=false`,
-		tmdbFetcher,
-		{
-			errorRetryCount: 0, // 重試次數
-		}
+	const path = encodeURIComponent(
+		`/movie/upcoming?page=1&language=zh-TW&include_adult=false`
 	);
+	const { data, isLoading } = useSWR(path, tmdbFetcher, {
+		errorRetryCount: 0, // 重試次數
+	});
 	const fakeData = () => {
 		return Array.from({ length: 20 }, (_, i) => ({
 			id: i + 1,

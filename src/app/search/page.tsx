@@ -47,8 +47,10 @@ export default function SearchPage() {
 		if (pageIndex >= allPages && allPages > 0) {
 			return null; // reached the end
 		}
-
-		return `/search/movie?query=${keyword}&page=${pageIndex + 1}&language=zh-TW&include_adult=false`;
+		const path = encodeURIComponent(
+			`search/movie?query=${keyword}&include_adult=false&language=zh-TW&page=${pageIndex + 1}`
+		);
+		return path;
 	};
 
 	const { data, isValidating, setSize, error, size } = useSWRInfinite(

@@ -68,10 +68,7 @@ export default function Movie() {
 										className="object-cover"
 										sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
 										quality={90}
-										src={imageTMDB({
-											src: baseData.poster_path,
-											width: 400,
-										})}
+										src={imageTMDB({ src: baseData.poster_path, width: 400 })}
 									/>
 								</div>
 								<div className="pl-0 pt-8 md:pl-8 md:pt-0 ">

@@ -1,5 +1,6 @@
 import { Image } from "@heroui/react";
 import NextImage from "next/image";
+import imageTMDB from "@/app/utils/imageTMDB";
 interface BannerType {
 	alt: string;
 	quality?: number;
@@ -34,7 +35,7 @@ export default function BannerFullScreen({
 						sizes={ImageSizes}
 						quality={quality}
 						radius="none"
-						src={src}
+						src={imageTMDB({ src, width: 1280 })}
 					/>
 					{/* 遮罩 */}
 					<div className="absolute top-0 left-0 right-0 h-[20vh] z-10 bg-gradient-to-t from-black/0 to-black/40"></div>

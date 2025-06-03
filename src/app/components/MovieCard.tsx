@@ -39,10 +39,7 @@ const MovieCardHorizontal = ({
 							className="object-cover"
 							sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
 							quality={80}
-							src={imageTMDB({
-								src: movie?.poster_path,
-								width: 400,
-							})}
+							src={imageTMDB({ src: movie?.poster_path, width: 400 })}
 						/>
 					)}
 				</div>

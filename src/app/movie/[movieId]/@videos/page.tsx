@@ -14,13 +14,12 @@ interface IVideo {
 }
 export default function Videos() {
 	const movieId = useParams().movieId;
-	const { data, isLoading } = useSWR(
-		`/movie/${movieId}/videos?include_adult=false`,
-		tmdbFetcher,
-		{
-			errorRetryCount: 0, // 重試次數
-		}
+	const path = encodeURIComponent(
+		`/movie/${movieId}/videos?include_adult=false`
 	);
+	const { data, isLoading } = useSWR(path, tmdbFetcher, {
+		errorRetryCount: 0, // 重試次數
+	});
 
 	const videosFiltered: IVideo[] = data?.results?.filter((item: IVideo) => {
 		return item.site === "YouTube" && item.type === "Trailer";

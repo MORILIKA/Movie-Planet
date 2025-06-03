@@ -35,8 +35,10 @@ export default function Reviews() {
 		if (pageIndex >= allPages && allPages > 0) {
 			return null; // reached the end
 		}
-
-		return `/movie/${movieId}/reviews?include_adult=false&page=${pageIndex + 1}`;
+		const path = encodeURIComponent(
+			`/movie/${movieId}/reviews?include_adult=false&page=${pageIndex + 1}`
+		);
+		return path;
 	};
 
 	const { data, isValidating, setSize, size } = useSWRInfinite(

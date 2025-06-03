@@ -37,13 +37,12 @@ interface ICrew {
 
 export default function Credits() {
 	const movieId = useParams().movieId;
-	const { data, error, isLoading } = useSWR(
-		`/movie/${movieId}/credits?language=zh-TW&include_adult=false`,
-		tmdbFetcher,
-		{
-			errorRetryCount: 0, // 重試次數
-		}
+	const path = encodeURIComponent(
+		`/movie/${movieId}/credits?language=zh-TW&include_adult=false`
 	);
+	const { data, error, isLoading } = useSWR(path, tmdbFetcher, {
+		errorRetryCount: 0, // 重試次數
+	});
 
 	const isEmptyData = !data && !isLoading && !error;
 	const carouselOptions: EmblaOptionsType = {

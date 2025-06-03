@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { Skeleton } from "@heroui/react";
 import BannerFullScreen from "@/app/components/BannerFullScreen";
-import imageTMDB from "@/app/utils/imageTMDB";
 import useSWR from "swr";
 import { tmdbFetcher } from "@/app/apis/api";
 import { MovieCardVertical } from "@/app/components/MovieCard";
@@ -66,7 +65,7 @@ export default function IndexPage() {
 				{movieRandom && (
 					<BannerFullScreen
 						alt={movieRandom?.title}
-						src={imageTMDB({ src: movieRandom?.backdrop_path, width: 1280 })}
+						src={movieRandom?.backdrop_path}
 						title={movieRandom?.original_title}
 						subtitle={movieRandom?.title}
 						ImageSizes="(max-width: 768px) 400, 1280"

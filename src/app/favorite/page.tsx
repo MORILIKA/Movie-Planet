@@ -23,9 +23,10 @@ interface Movie {
 	joinAt: string;
 }
 const fetchMovieDetails = async (id: number, joinAt: string) => {
-	const response = await tmdbFetcher(
+	const path = encodeURIComponent(
 		`/movie/${id}?language=zh-TW&include_adult=false`
 	);
+	const response = await tmdbFetcher(path);
 	return { joinAt, ...response };
 };
 
