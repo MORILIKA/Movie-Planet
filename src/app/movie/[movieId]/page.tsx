@@ -5,13 +5,7 @@ import { tmdbFetcher } from "@/app/apis/api";
 import imageTMDB from "@/app/utils/imageTMDB";
 import useSWR from "swr";
 import NextImage from "next/image";
-import {
-	Image,
-	Chip,
-	Skeleton,
-	Spinner,
-	CircularProgress,
-} from "@heroui/react";
+import { Image, Chip, Skeleton, CircularProgress } from "@heroui/react";
 
 interface Movie {
 	id: number;
@@ -42,82 +36,76 @@ export default function Movie() {
 	const isEmptyData = !baseData && !isLoading && !error;
 
 	return (
-		<div className="relative w-full min-h-[100vh]">
-			<Skeleton className="w-full h-[100vh] relative" isLoaded={!isLoading}>
-				{baseData && (
-					<>
-						<div
-							className="p-6 w-full mx-auto pt-24 flex flex-row justify-center items-center relative top-0 z-10"
-							style={{
-								backgroundImage: `url(${imageTMDB({ src: baseData.backdrop_path, width: 1280 })})`,
-								backgroundSize: "cover",
-								backgroundPosition: "center",
-							}}
-						>
-							<div className="absolute left-0 right-0 h-[100%] bottom-0 z-10 bg-gradient-to-t from-black/100 to-black/70"></div>
+		<div className="relative w-full">
+			<Skeleton className="w-full relative" isLoaded={!isLoading}>
+				<div
+					className="p-6 w-full mx-auto pt-24 flex flex-row justify-center items-center z-10 w-full relative"
+					style={{
+						backgroundImage: baseData
+							? `url(${imageTMDB({ src: baseData.backdrop_path, width: 1280 })})`
+							: undefined,
+						backgroundSize: "cover",
+						backgroundPosition: "center",
+					}}
+				>
+					<div className="absolute left-0 right-0 h-[100%] top-0 z-10 bg-gradient-to-t from-black/100 to-black/70"></div>
 
-							<div className="container mx-auto relative flex flex-wrap md:flex-nowrap z-10">
-								<div className="w-[100%] h-[0px] pb-[150%] relative flex-shrink-0 md:w-[300px] md:h-[450px] md:pb-0">
-									<Image
-										as={NextImage}
-										removeWrapper
-										alt={baseData.title}
-										fill
-										priority
-										radius="none"
-										className="object-cover"
-										sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
-										quality={90}
-										src={imageTMDB({ src: baseData.poster_path, width: 400 })}
-									/>
-								</div>
-								<div className="pl-0 pt-8 md:pl-8 md:pt-0 ">
-									<h1 className="text-2xl font-bold">{baseData.title}</h1>
-									<h2 className="mt-2">{baseData.original_title}</h2>
-									<div className="mt-2">
-										<CircularProgress
-											aria-label="Loading..."
-											formatOptions={{ style: "percent" }}
-											color="warning"
-											showValueLabel={true}
-											label={`${baseData.vote_count} 投票`}
-											size="lg"
-											value={baseData.vote_average * 10}
-										/>
-										{baseData.genres?.map((genre) => (
-											<Chip
-												key={genre.id}
-												color="default"
-												variant="flat"
-												radius="md"
-												className="mt-2 mr-2"
-											>
-												{genre.name}
-											</Chip>
-										))}
-									</div>
-
-									<div className="mt-2"></div>
-									<p className="mt-4 leading-[1.75]">{baseData.overview}</p>
-								</div>
-							</div>
+					<div className="container mx-auto relative flex flex-wrap md:flex-nowrap z-10">
+						<div className="w-[100%] h-[0px] pb-[150%] relative flex-shrink-0 md:w-[300px] md:h-[450px] md:pb-0">
+							{baseData?.poster_path && (
+								<Image
+									as={NextImage}
+									removeWrapper
+									alt={baseData?.title || "Movie Poster"}
+									fill
+									priority
+									radius="none"
+									className="object-cover"
+									sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
+									quality={90}
+									src={
+										baseData
+											? imageTMDB({ src: baseData.poster_path, width: 400 })
+											: ""
+									}
+								/>
+							)}
 						</div>
-					</>
-				)}
-			</Skeleton>
+						<div className="pl-0 pt-8 md:pl-8 md:pt-0 ">
+							<h1 className="text-2xl font-bold">{baseData?.title || ""}</h1>
+							<h2 className="mt-2">{baseData?.original_title || ""}</h2>
+							<div className="mt-2">
+								<CircularProgress
+									aria-label="Loading..."
+									formatOptions={{ style: "percent" }}
+									color="warning"
+									showValueLabel={true}
+									label={`${baseData?.vote_count || 0} 投票`}
+									size="lg"
+									value={
+										baseData?.vote_average ? baseData.vote_average * 10 : 0
+									}
+								/>
+								{baseData?.genres?.map((genre) => (
+									<Chip
+										key={genre.id}
+										color="default"
+										variant="flat"
+										radius="md"
+										className="mt-2 mr-2"
+									>
+										{genre.name}
+									</Chip>
+								))}
+							</div>
 
-			{error?.status === 404 && <p>找不到這部電影耶！</p>}
-			{isLoading && (
-				<div className="flex flex-col items-center justify-center w-full mt-4">
-					<Spinner
-						size="md"
-						color="primary"
-						labelColor="primary"
-						variant="gradient"
-						label="Loading..."
-					/>
+							<div className="mt-2"></div>
+							<p className="mt-4 leading-[1.75]">{baseData?.overview || ""}</p>
+						</div>
+					</div>
 				</div>
-			)}
+			</Skeleton>
+			{error?.status === 404 && <p>找不到這部電影耶！</p>}
 			{isEmptyData && <p className="text-center">暫無資料。</p>}
 		</div>
 	);

@@ -5,7 +5,6 @@ import useSWR from "swr";
 import EmblaCarousel from "@/app/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import AvatarCard from "@/app/components/AvatarCard";
-import { Spinner } from "@heroui/react";
 
 interface ICast {
 	adult: boolean;
@@ -50,22 +49,22 @@ export default function Credits() {
 		slidesToScroll: "auto",
 	};
 	return (
-		<div className={`relative w-full`}>
-			{isLoading && (
-				<div className="flex flex-col items-center justify-center w-full mt-4">
-					<Spinner
-						size="md"
-						color="primary"
-						labelColor="primary"
-						variant="gradient"
-						label="Loading..."
-					/>
-				</div>
-			)}
-
+		<div className="relative w-full mt-8">
 			<div className="px-4 container mx-auto relative">
 				<h1 className="text-2xl font-bold mb-4">導演</h1>
 				{isEmptyData && <p className="text-center">暫無資料。</p>}
+				{isLoading && (
+					<div className="flex space-x-4">
+						{Array.from({ length: 3 }).map((_, index) => (
+							<div key={index} className="opacity-20">
+								<AvatarCard
+									title="Loading..."
+									subtitle="Loading..."
+								></AvatarCard>
+							</div>
+						))}
+					</div>
+				)}
 				{data && data?.crew && (
 					<EmblaCarousel
 						slides={
@@ -92,6 +91,18 @@ export default function Credits() {
 			<div className="px-4 container mx-auto relative mt-4">
 				<h1 className="text-2xl font-bold mb-4">演員陣容</h1>
 				{isEmptyData && <p className="text-center">暫無資料。</p>}
+				{isLoading && (
+					<div className="flex space-x-4">
+						{Array.from({ length: 3 }).map((_, index) => (
+							<div key={index} className="opacity-20">
+								<AvatarCard
+									title="Loading..."
+									subtitle="Loading..."
+								></AvatarCard>
+							</div>
+						))}
+					</div>
+				)}
 				{data && data?.cast && (
 					<EmblaCarousel
 						slides={data?.cast as ICast[]}
