@@ -17,6 +17,9 @@ const config = {
 	},
 	darkMode: "class",
 	plugins: [heroui()],
+	experimental: {
+		optimizeUniversalDefaults: true,
+	},
 };
 
 export default config;
