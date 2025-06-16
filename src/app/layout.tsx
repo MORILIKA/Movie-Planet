@@ -22,8 +22,10 @@ export default function RootLayout({
 			<body>
 				<div className="h-[100vh] overflow-y-auto" id="global-scroll-container">
 					<Providers>
-						<Navbar />
-						<Suspense>{children}</Suspense>
+						<Suspense>
+							<Navbar />
+							{children}
+						</Suspense>
 					</Providers>
 				</div>
 			</body>
