@@ -2,25 +2,16 @@
 
 import { useMemo } from "react";
 import { Skeleton } from "@heroui/react";
-import BannerFullScreen from "@/app/components/BannerFullScreen";
+import BannerFullScreen from "@/components/BannerFullScreen";
 import useSWR from "swr";
-import { tmdbFetcher } from "@/app/apis/api";
-import { MovieCardVertical } from "@/app/components/MovieCard";
-import FavoriteButton from "@/app/components/FavoriteButton";
-import EmblaCarousel from "@/app/components/EmblaCarousel";
+import { tmdbFetcher } from "@/apis/api";
+import { MovieCardVertical } from "@/components/MovieCard";
+import FavoriteButton from "@/components/FavoriteButton";
+import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { useRouter } from "next/navigation";
+import { Movie } from "@/types/base";
 
-interface Movie {
-	id: number;
-	title: string;
-	original_title: string;
-	backdrop_path: string;
-	overview: string;
-	release_date: string;
-	poster_path: string;
-	vote_average: number;
-}
 export default function IndexPage() {
 	const router = useRouter();
 	const path = encodeURIComponent(

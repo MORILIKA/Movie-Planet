@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import "./globalIcon.css";
 import { Providers } from "./providers";
-import Navbar from "@/app/components/Navbar";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
 	title: "電影星球 - 最新電影資訊",

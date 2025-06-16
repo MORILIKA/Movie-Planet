@@ -1,17 +1,8 @@
 import { Card, CardFooter, Image, Chip, Skeleton } from "@heroui/react";
 import NextImage from "next/image";
-import imageTMDB from "@/app/utils/imageTMDB";
+import imageTMDB from "@/utils/imageTMDB";
+import { Movie } from "@/types/base";
 
-interface Movie {
-	id: number;
-	title?: string;
-	original_title?: string;
-	backdrop_path?: string;
-	overview?: string;
-	release_date?: string;
-	poster_path?: string;
-	vote_average?: number;
-}
 interface MovieCardComponentProps {
 	movie: Movie;
 	onPress?: () => void;
@@ -43,17 +34,23 @@ const MovieCardHorizontal = ({
 						/>
 					)}
 				</div>
-				<div className="p-6 text-left pr-8">
-					<h3 className="text-md font-bold double-ellipsis">{movie?.title}</h3>
+				<div className="p-4 text-left pr-8 w-full">
+					<h3 className="text-lg md:text-xl font-bold double-ellipsis">
+						{movie?.title}
+					</h3>
 					<h3 className="text-sm font-bold double-ellipsis opacity-80">
 						{movie?.original_title}
 					</h3>
 					{movie?.release_date && (
-						<Chip color="default" variant="flat" radius="md" className="mt-2">
+						<Chip
+							color="default"
+							variant="flat"
+							radius="md"
+							className="mt-2 pl-0 text-sm"
+						>
 							{movie.release_date.toString()}
 						</Chip>
 					)}
-
 					{children}
 				</div>
 			</Card>

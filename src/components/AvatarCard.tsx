@@ -1,12 +1,17 @@
 import { Avatar } from "@heroui/react";
-import imageTMDB from "@/app/utils/imageTMDB";
-interface IAvatar {
+import imageTMDB from "@/utils/imageTMDB";
+interface AvatarCardProps {
 	imagePath?: string;
 	imageAlt?: string;
 	title?: string;
 	subtitle?: string;
 }
-const AvatarCard = ({ imagePath, imageAlt, title, subtitle }: IAvatar) => (
+const AvatarCard = ({
+	imagePath,
+	imageAlt,
+	title,
+	subtitle,
+}: AvatarCardProps) => (
 	<div className="flex flex-col items-center p-4 w-[160px] max-w-[160px]">
 		<div className="relative ">
 			{imagePath ? (

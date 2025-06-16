@@ -1,36 +1,19 @@
 "use client";
 import { useParams } from "next/navigation";
-import { tmdbFetcher } from "@/app/apis/api";
+import { tmdbFetcher } from "@/apis/api";
 import useSWR from "swr";
-import EmblaCarousel from "@/app/components/EmblaCarousel";
+import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
-import AvatarCard from "@/app/components/AvatarCard";
+import AvatarCard from "@/components/AvatarCard";
+import { Cast } from "@/types/base";
 
-interface ICast {
-	adult: boolean;
-	gender: number;
-	id: number;
-	known_for_department: string;
-	name: string;
-	original_name: string;
-	popularity: number;
-	profile_path?: string;
+interface ICast extends Cast {
 	cast_id: number;
 	character: string;
-	credit_id: string;
 	order: number;
 }
-interface ICrew {
-	adult: boolean;
-	gender: number;
-	id: number;
-	known_for_department: string;
-	name: string;
-	original_name: string;
-	popularity: number;
-	profile_path?: string;
+interface ICrew extends Cast {
 	department: string;
-	credit_id: string;
 	job: string;
 }
 

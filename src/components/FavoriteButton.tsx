@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, addToast } from "@heroui/react";
 import useFavoriteStore from "@/store/favoriteStore";
-import Icons from "@/app/components/Icons";
+import Icons from "@/components/Icons";
 
 interface FavoriteButtonProps {
 	movieId: number;

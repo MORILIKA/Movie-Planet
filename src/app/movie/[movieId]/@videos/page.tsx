@@ -1,17 +1,9 @@
 "use client";
 import { useParams } from "next/navigation";
-import { tmdbFetcher } from "@/app/apis/api";
+import { tmdbFetcher } from "@/apis/api";
 import useSWR from "swr";
-interface IVideo {
-	id: string;
-	key: string;
-	name?: string;
-	official?: boolean;
-	published_at?: string;
-	site: string;
-	size?: number;
-	type: string;
-}
+import { Video } from "@/types/base";
+
 export default function Videos() {
 	const movieId = useParams().movieId;
 	const path = encodeURIComponent(
@@ -21,7 +13,7 @@ export default function Videos() {
 		errorRetryCount: 0, // 重試次數
 	});
 
-	const videosFiltered: IVideo[] = data?.results?.filter((item: IVideo) => {
+	const videosFiltered: Video[] = data?.results?.filter((item: Video) => {
 		return item.site === "YouTube" && item.type === "Trailer";
 	});
 	return (
@@ -33,7 +25,7 @@ export default function Videos() {
 				{(!data || videosFiltered.length === 0) && <p>嗯..🤔 似乎沒有預告片</p>}
 				<div className="grid grid-cols-1 gap-8">
 					{videosFiltered &&
-						videosFiltered?.map((video: IVideo) => (
+						videosFiltered?.map((video: Video) => (
 							<div
 								key={video.id}
 								className="relative aspect-video w-[80%] mx-auto

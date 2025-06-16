@@ -1,23 +1,17 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { tmdbFetcher } from "@/app/apis/api";
-import imageTMDB from "@/app/utils/imageTMDB";
+import { tmdbFetcher } from "@/apis/api";
+import imageTMDB from "@/utils/imageTMDB";
 import useSWR from "swr";
 import NextImage from "next/image";
 import { Image, Chip, Skeleton, CircularProgress } from "@heroui/react";
+import type { Movie } from "@/types/base";
 
-interface Movie {
-	id: number;
-	title: string;
-	original_title: string;
-	backdrop_path: string;
-	overview: string;
-	release_date: string;
-	poster_path: string;
+interface MovieDetail extends Movie {
 	vote_average: number;
 	vote_count: number;
-	genres?: { id: number; name: string }[];
+	genres: { id: number; name: string }[];
 }
 export default function Movie() {
 	const movieId = useParams().movieId;
@@ -25,7 +19,7 @@ export default function Movie() {
 		data: baseData,
 		error,
 		isLoading,
-	} = useSWR<Movie>(
+	} = useSWR<MovieDetail>(
 		`/movie/${movieId}?language=zh-TW&include_adult=false`,
 		tmdbFetcher,
 		{

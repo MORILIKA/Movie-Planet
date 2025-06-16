@@ -1,27 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
-import { tmdbFetcher } from "@/app/apis/api";
-import { MovieCardHorizontal } from "@/app/components/MovieCard";
-import FavoriteButton from "@/app/components/FavoriteButton";
+import { tmdbFetcher } from "@/apis/api";
+import { MovieCardHorizontal } from "@/components/MovieCard";
+import FavoriteButton from "@/components/FavoriteButton";
 import useFavoriteStore from "@/store/favoriteStore";
 import { ScrollShadow, Select, SelectItem } from "@heroui/react";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-tw";
 import { useRouter } from "next/navigation";
-
+import { Movie as BaseMovie } from "@/types/base";
+interface Movie extends BaseMovie {
+	joinAt: string; // 加入清單的時間
+}
 dayjs.locale("zh-tw");
 
-interface Movie {
-	id: number;
-	title: string;
-	original_title?: string;
-	backdrop_path?: string;
-	overview?: string;
-	release_date?: string;
-	poster_path?: string;
-	vote_average?: number;
-	joinAt: string;
-}
 const fetchMovieDetails = async (id: number, joinAt: string) => {
 	const path = encodeURIComponent(
 		`/movie/${id}?language=zh-TW&include_adult=false`
@@ -63,7 +55,9 @@ const FavoritePage = () => {
 	};
 	const sortedMovies = [...movies].sort((a, b) => {
 		if (sortKey === "joinAt") {
-			return new Date(a.joinAt).getTime() - new Date(b.joinAt).getTime();
+			return (
+				new Date(a.joinAt || 0).getTime() - new Date(b.joinAt || 0).getTime()
+			);
 		} else if (sortKey === "title") {
 			return a.title.localeCompare(b.title);
 		} else if (sortKey === "release_date") {
@@ -114,8 +108,9 @@ const FavoritePage = () => {
 										}}
 										onPress={() => goToDetailPage(movie.id)}
 									>
-										<p className="text-sm mt-4">
-											加入時間 {dayjs(movie.joinAt).format("YYYY-MM-DD HH:ss")}
+										<p className="text-xs mt-4 text-gray-500">
+											加入清單時間：
+											{dayjs(movie.joinAt).format("YYYY-MM-DD HH:ss")}
 										</p>
 									</MovieCardHorizontal>
 									<FavoriteButton

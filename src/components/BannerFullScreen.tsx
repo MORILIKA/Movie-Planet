@@ -1,7 +1,7 @@
 import { Image } from "@heroui/react";
 import NextImage from "next/image";
-import imageTMDB from "@/app/utils/imageTMDB";
-interface BannerType {
+import imageTMDB from "@/utils/imageTMDB";
+interface BannerFullScreenProps {
 	alt: string;
 	quality?: number;
 	src: string;
@@ -20,7 +20,7 @@ export default function BannerFullScreen({
 	title,
 	subtitle,
 	className = "w-full",
-}: BannerType) {
+}: BannerFullScreenProps) {
 	return (
 		<div className={`relative overflow-hidden ${className}`}>
 			{src && alt && (

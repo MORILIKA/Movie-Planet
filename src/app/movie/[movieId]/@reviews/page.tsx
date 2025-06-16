@@ -2,24 +2,11 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
-import { tmdbFetcher } from "@/app/apis/api";
+import { tmdbFetcher } from "@/apis/api";
 import { Button, Card, User, Spinner } from "@heroui/react";
-import imageTMDB from "@/app/utils/imageTMDB";
+import imageTMDB from "@/utils/imageTMDB";
+import { Review } from "@/types/base";
 
-interface IReview {
-	id: string;
-	author: string;
-	author_details?: {
-		name?: string;
-		username?: string;
-		rating?: number;
-		avatar_path?: string;
-	};
-	content?: string;
-	created_at: string;
-	updated_at?: string;
-	url?: string;
-}
 export default function Reviews() {
 	const movieId = useParams().movieId;
 	const [allPages, setAllPages] = useState<number>(0);
@@ -76,7 +63,7 @@ export default function Reviews() {
 				{data &&
 					data.map((page) => (
 						<div key={page.id} className="mb-8">
-							{page.results.map((review: IReview) => (
+							{page.results.map((review: Review) => (
 								<Card key={review.id} className=" p-4 rounded-lg mb-4">
 									<div className="flex justify-between items-center">
 										<User

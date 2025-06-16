@@ -37,11 +37,14 @@ npm run dev
 
 ## Environment Variables
 
--**NEXT_PUBLIC_API_TMDB_URL**: https://api.themoviedb.org/3/ （TMDB的API網址）-**NEXT_PUBLIC_TMDB_IMAGE_URL**: https://image.tmdb.org （TMDB的圖片根網址）-**TMDB_ACCESS_TOKEN**: TMDB 的 Access Token (https://www.themoviedb.org/settings/api)，
-註冊會員-> 申請API 使用權限-> 取得 API Read Access Token
+NEXT_PUBLIC_API_TMDB_URL: https://api.themoviedb.org/3/ （TMDB的API網址）NEXT_PUBLIC_TMDB_IMAGE_URL: https://image.tmdb.org （TMDB的圖片根網址）TMDB_ACCESS_TOKEN: TMDB 的 Access Token (https://www.themoviedb.org/settings/api)，註冊會員-> 申請API 使用權限-> 取得 API Read Access Token
+
+## Plugins
+
+-**react-infinite-scroll-component**: 搜尋結果無限滾動的功能使用[react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component)
 
 ## 待辦
 
-網站優化
+網站優化 ing
 單元測試
 元件說明整理

@@ -9,9 +9,9 @@ import {
 	Button,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import SearchInput from "@/app/components/SearchInput";
-import Icons from "@/app/components/Icons";
-import throttle from "@/app/utils/throttle";
+import SearchInput from "@/components/SearchInput";
+import Icons from "@/components/Icons";
+import throttle from "@/utils/throttle";
 
 export const IconPlanet = () => {
 	return (
@@ -81,7 +81,7 @@ export default function Nav() {
 						<SearchInput />
 
 						<Button
-							className="font-medium hidden sm:inline-flex"
+							className="font-medium hidden sm:inline-flex flex-shrink-0"
 							color="danger"
 							size="md"
 							onPress={() => router.push("/favorite")}
@@ -90,12 +90,12 @@ export default function Nav() {
 							待看清單
 						</Button>
 						<Button
-							className="font-medium text-xs sm:hidden"
+							className="font-medium text-xs sm:hidden flex-shrink-0 gap-1"
 							color="danger"
 							size="sm"
 							onPress={() => router.push("/favorite")}
 						>
-							<Icons name="favorite" />
+							<Icons name="favorite" style="!text-[14px]" />
 							待看清單
 						</Button>
 					</div>
