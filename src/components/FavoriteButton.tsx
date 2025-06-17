@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, addToast } from "@heroui/react";
 import useFavoriteStore from "@/store/favoriteStore";
-import Icons from "@/components/Icons";
+import { Heart } from "lucide-react";
 
 interface FavoriteButtonProps {
 	movieId: number;
@@ -49,7 +49,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
 			className="duration-300"
 			{...props}
 		>
-			<Icons name="favorite" />
+			<Heart size={20} />
 		</Button>
 	);
 };

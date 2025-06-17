@@ -10,26 +10,8 @@ import {
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Spinner } from "@heroui/react";
+import { Search } from "lucide-react";
 import debounce from "@/utils/debouce";
-import Icons from "@/components/Icons";
-export const IconSearch = () => {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			strokeWidth={1.5}
-			stroke="currentColor"
-			className="size-6 cursor-pointer"
-		>
-			<path
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-			/>
-		</svg>
-	);
-};
 
 export default function SearchInput() {
 	const searchParams = useSearchParams();
@@ -72,7 +54,7 @@ export default function SearchInput() {
 					className="ml-2 flex-shrink-0 flex justify-center items-center cursor-pointer"
 					onClick={() => setIsSearchOpen(!isSearchOpen)}
 				>
-					<Icons name="Search" style="text-[24px]" />
+					<Search />
 				</div>
 			</div>
 			{/* 手機裝置改為彈出式搜尋 */}
@@ -80,7 +62,7 @@ export default function SearchInput() {
 				<Popover showArrow offset={10} placement="bottom" size="sm">
 					<PopoverTrigger>
 						<Button className="bg-transparent" isIconOnly size="sm">
-							<Icons name="Search" style="text-[24px]" />
+							<Search />
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent>

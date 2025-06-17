@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "./globals.css";
-import "./globalIcon.css";
 import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
 

@@ -5,7 +5,7 @@ import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 import { tmdbFetcher } from "@/apis/api";
 import { MovieCardHorizontal } from "@/components/MovieCard";
 import { ScrollShadow, Button, Spinner } from "@heroui/react";
-import Icons from "@/components/Icons";
+import { ArrowUp } from "lucide-react";
 import FavoriteButton from "@/components/FavoriteButton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Movie } from "@/types/base";
@@ -162,7 +162,7 @@ export default function SearchPage() {
 				variant="faded"
 				onPress={scrollToTop}
 			>
-				<Icons name="keyboard_arrow_up" />
+				<ArrowUp size={20} />
 			</Button>
 		</>
 	);

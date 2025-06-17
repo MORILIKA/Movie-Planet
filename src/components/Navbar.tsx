@@ -10,32 +10,8 @@ import {
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import SearchInput from "@/components/SearchInput";
-import Icons from "@/components/Icons";
+import { CirclePlay, Heart } from "lucide-react";
 import throttle from "@/utils/throttle";
-
-export const IconPlanet = () => {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			strokeWidth={1.5}
-			stroke="currentColor"
-			className="size-6"
-		>
-			<path
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-			/>
-			<path
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-			/>
-		</svg>
-	);
-};
 
 export default function Nav() {
 	const router = useRouter();
@@ -46,7 +22,6 @@ export default function Nav() {
 	useEffect(() => {
 		const scrollEl = document.getElementById("global-scroll-container");
 		const handlerScroll = throttle(() => {
-			const scrollEl = document.getElementById("global-scroll-container");
 			const scrollTop: number = scrollEl?.scrollTop || 0;
 			const navHeight = document.getElementById("navbar")?.clientHeight || 0;
 			// 當滾動超過 nav高度時，顯示背景
@@ -70,7 +45,7 @@ export default function Nav() {
 			<NavbarContent justify="start">
 				<NavbarBrand>
 					<Link className="text-white" href="/">
-						<IconPlanet />
+						<CirclePlay />
 						<p className="font-medium text-inherit ml-2">電影星球</p>
 					</Link>
 				</NavbarBrand>
@@ -86,7 +61,7 @@ export default function Nav() {
 							size="md"
 							onPress={() => router.push("/favorite")}
 						>
-							<Icons name="favorite" />
+							<Heart size={20} />
 							待看清單
 						</Button>
 						<Button
@@ -95,7 +70,7 @@ export default function Nav() {
 							size="sm"
 							onPress={() => router.push("/favorite")}
 						>
-							<Icons name="favorite" style="!text-[14px]" />
+							<Heart size={14} />
 							待看清單
 						</Button>
 					</div>
