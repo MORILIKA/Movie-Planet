@@ -1,15 +1,10 @@
 "use client";
-import {
-	Input,
-	Popover,
-	PopoverTrigger,
-	Button,
-	PopoverContent,
-} from "@heroui/react";
-
+import { Input } from "@heroui/input";
+import { Popover, PopoverTrigger, PopoverContent } from "@heroui/popover";
+import { Button } from "@heroui/button";
+import { Spinner } from "@heroui/spinner";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Spinner } from "@heroui/react";
 import { Search } from "lucide-react";
 import debounce from "@/utils/debouce";
 

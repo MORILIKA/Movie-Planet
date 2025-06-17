@@ -1,5 +1,6 @@
 "use client";
-import { Image, Button } from "@heroui/react";
+import { Image } from "@heroui/image";
+import { Button } from "@heroui/button";
 
 export default function Error({
 	error,

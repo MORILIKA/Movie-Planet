@@ -1,4 +1,7 @@
-import { Card, CardFooter, Image, Chip, Skeleton } from "@heroui/react";
+import { Card, CardFooter } from "@heroui/card";
+import { Image } from "@heroui/image";
+import { Chip } from "@heroui/chip";
+import { Skeleton } from "@heroui/skeleton";
 import NextImage from "next/image";
 import imageTMDB from "@/utils/imageTMDB";
 import { Movie } from "@/types/base";

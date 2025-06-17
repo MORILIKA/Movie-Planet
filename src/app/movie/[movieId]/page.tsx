@@ -5,7 +5,11 @@ import { tmdbFetcher } from "@/apis/api";
 import imageTMDB from "@/utils/imageTMDB";
 import useSWR from "swr";
 import NextImage from "next/image";
-import { Image, Chip, Skeleton, CircularProgress } from "@heroui/react";
+import { Image } from "@heroui/image";
+import { Chip } from "@heroui/chip";
+import { Skeleton } from "@heroui/skeleton";
+import { CircularProgress } from "@heroui/progress";
+
 import type { Movie } from "@/types/base";
 
 interface MovieDetail extends Movie {

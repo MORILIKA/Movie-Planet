@@ -1,13 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import {
-	Navbar,
-	NavbarBrand,
-	NavbarContent,
-	NavbarItem,
-	Link,
-	Button,
-} from "@heroui/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
+import { Link } from "@heroui/link";
+import { Button } from "@heroui/button";
 import { useRouter } from "next/navigation";
 import SearchInput from "@/components/SearchInput";
 import { CirclePlay, Heart } from "lucide-react";

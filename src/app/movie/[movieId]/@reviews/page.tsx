@@ -3,7 +3,10 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 import { tmdbFetcher } from "@/apis/api";
-import { Button, Card, User, Spinner } from "@heroui/react";
+import { Button } from "@heroui/button";
+import { Card } from "@heroui/card";
+import { User } from "@heroui/user";
+import { Spinner } from "@heroui/spinner";
 import imageTMDB from "@/utils/imageTMDB";
 import { Review } from "@/types/base";
 

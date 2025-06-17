@@ -1,4 +1,4 @@
-import { Avatar } from "@heroui/react";
+import { Avatar } from "@heroui/avatar";
 import imageTMDB from "@/utils/imageTMDB";
 interface AvatarCardProps {
 	imagePath?: string;

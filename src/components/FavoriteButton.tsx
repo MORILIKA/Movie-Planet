@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, addToast } from "@heroui/react";
+import { Button } from "@heroui/button";
+import { addToast } from "@heroui/toast";
 import useFavoriteStore from "@/store/favoriteStore";
 import { Heart } from "lucide-react";
 

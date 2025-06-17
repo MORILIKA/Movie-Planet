@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addToast } from "@heroui/react";
+import { addToast } from "@heroui/toast";
 
 const baseURL =
 	typeof window === "undefined"

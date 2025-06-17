@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { Skeleton } from "@heroui/react";
+import { Skeleton } from "@heroui/skeleton";
 import BannerFullScreen from "@/components/BannerFullScreen";
 import useSWR from "swr";
 import { tmdbFetcher } from "@/apis/api";

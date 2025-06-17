@@ -6,7 +6,9 @@ import { useSWRConfig } from "swr";
 import { tmdbFetcher } from "@/apis/api";
 import throttle from "@/utils/throttle";
 import { MovieCardHorizontal } from "@/components/MovieCard";
-import { ScrollShadow, Button, Spinner } from "@heroui/react";
+import { ScrollShadow } from "@heroui/scroll-shadow";
+import { Button } from "@heroui/button";
+import { Spinner } from "@heroui/spinner";
 import Icons from "@/components/Icons";
 import FavoriteButton from "@/components/FavoriteButton";
 
