@@ -79,6 +79,7 @@ export default function IndexPage() {
 										<MovieCardVertical
 											movie={movieSlide}
 											isLoading={isLoading}
+											priority={true}
 											onPress={() => goToDetailPage(movieSlide.id)}
 										/>
 

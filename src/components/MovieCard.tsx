@@ -7,6 +7,7 @@ interface MovieCardComponentProps {
 	movie: Movie;
 	onPress?: () => void;
 	imageType?: "poster" | "backdrop";
+	priority?: boolean;
 	children?: React.ReactNode;
 	isLoading?: boolean;
 }
@@ -14,6 +15,7 @@ const MovieCardHorizontal = ({
 	movie,
 	onPress,
 	children,
+	priority = false,
 }: MovieCardComponentProps) => {
 	return (
 		<Skeleton isLoaded={!!movie}>
@@ -25,12 +27,12 @@ const MovieCardHorizontal = ({
 							removeWrapper
 							alt={movie?.title}
 							fill
-							priority
+							priority={priority}
 							radius="none"
 							className="object-cover"
 							sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
 							quality={80}
-							src={imageTMDB({ src: movie?.poster_path, width: 400 })}
+							src={imageTMDB({ src: movie.poster_path, width: 400 })}
 						/>
 					)}
 				</div>
@@ -63,6 +65,7 @@ const MovieCardVertical = ({
 	imageType = "poster",
 	children,
 	isLoading = false,
+	priority = false,
 }: MovieCardComponentProps) => {
 	return (
 		<Card
@@ -74,20 +77,21 @@ const MovieCardVertical = ({
 		>
 			<Skeleton className="w-[100%] h-[150%] relative" isLoaded={!isLoading}>
 				<div className="w-[100%] relative overflow-hidden">
-					{movie.poster_path && imageType === "poster" && (
+					{movie?.poster_path && imageType === "poster" && (
 						<div className="w-full pb-[150%] relative">
+							{movie?.poster_path}
 							<Image
 								as={NextImage}
 								isZoomed
 								removeWrapper
 								alt={movie.title}
 								fill
-								priority
+								priority={priority}
 								radius="none"
 								className="object-cover"
 								sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
 								quality={75}
-								src={imageTMDB({ src: movie.poster_path, width: 400 })}
+								src={imageTMDB({ src: movie?.poster_path, width: 400 })}
 							/>
 						</div>
 					)}
@@ -99,7 +103,7 @@ const MovieCardVertical = ({
 								removeWrapper
 								alt={movie.title}
 								fill
-								priority
+								priority={priority}
 								radius="none"
 								className="object-cover"
 								sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"

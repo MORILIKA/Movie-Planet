@@ -23,11 +23,12 @@ export default function BannerFullScreen({
 }: BannerFullScreenProps) {
 	return (
 		<div className={`relative overflow-hidden ${className}`}>
-			{src && alt && (
+			{src && src !== "" && alt && (
 				<>
 					<Image
 						as={NextImage}
 						priority
+						loading="eager"
 						removeWrapper
 						alt={alt}
 						fill
@@ -36,6 +37,7 @@ export default function BannerFullScreen({
 						quality={quality}
 						radius="none"
 						src={imageTMDB({ src, width: 1280 })}
+						unoptimized={true}
 					/>
 					{/* 遮罩 */}
 					<div className="absolute top-0 left-0 right-0 h-[20vh] z-10 bg-gradient-to-t from-black/0 to-black/40"></div>
