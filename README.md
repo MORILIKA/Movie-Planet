@@ -23,7 +23,9 @@ npm run dev
 
 - **Heroui**: UI Framework 使用 [Heroui](https://www.heroui.com/)，因為樣式很適合且原為NextUI，跟Next.js的耦合程度應該不會太差。
 - **Tailwind CSS**: 主要樣式都靠Tailwind，少部分套件使用global.css修改樣式[Tailwind CSS](https://tailwindcss.com/)
-- **Material Icons**: 大部分Icon來源，並且有封裝為components使用。 [Material Icon](https://developers.google.com/fonts/docs/material_symbols?hl=zh-tw#use_in_web)
+- **Material Icons**: 大部分Icon來源，並且有封裝為components使用。!已改為使用lucide [Material Icon](https://developers.google.com/fonts/docs/material_symbols?hl=zh-tw#use_in_web)
+- **Lucide Icons**: 好用且很好自訂樣式
+  [Lucide] https://lucide.dev/
 
 ### State Management
 
@@ -43,8 +45,14 @@ NEXT_PUBLIC_API_TMDB_URL: https://api.themoviedb.org/3/ （TMDB的API網址）NE
 
 -**react-infinite-scroll-component**: 搜尋結果無限滾動的功能使用[react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component)
 
+-**react-intersection-observer**: 檢測元素是否可見，執行特定動作
+[react-intersection-observer](https://github.com/thebuilder/react-intersection-observer)
+
+-**embla-carousel-react**: 很多人推薦的Carousel，輕量性能好
+[embla-carousel-react](https://www.embla-carousel.com/get-started/react/)
+
 ## 待辦
 
-網站優化 ing
-單元測試
-元件說明整理
+網站優化: 部分完成 差Accessibility
+單元測試: 未開始
+元件說明整理: 未開始
