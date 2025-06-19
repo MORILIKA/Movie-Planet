@@ -1,5 +1,5 @@
-import React from "react";
-import { EmblaOptionsType } from "embla-carousel";
+import React, { useCallback, useEffect, useState } from "react";
+import { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
 import {
 	PrevButton,
 	NextButton,
@@ -15,9 +15,12 @@ type PropType<T = unknown> = {
 	[key: string]: unknown; // 允許其他屬性
 };
 
+// const LAZY_LOAD_THRESHOLD = 0.4;
+
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options, template, className } = props; // 接收 className
 	const [emblaRef, emblaApi] = useEmblaCarousel(options);
+	const [slidesInView, setSlidesInView] = useState<number[]>([]);
 
 	const {
 		prevBtnDisabled,
@@ -26,6 +29,26 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		onNextButtonClick,
 	} = usePrevNextButtons(emblaApi);
 
+	const updateSlidesInView = useCallback((emblaApi: EmblaCarouselType) => {
+		setSlidesInView((slidesInView) => {
+			if (slidesInView.length === emblaApi.slideNodes().length) {
+				emblaApi.off("slidesInView", updateSlidesInView);
+			}
+			const inView = emblaApi
+				.slidesInView()
+				.filter((index) => !slidesInView.includes(index));
+			return slidesInView.concat(inView);
+		});
+	}, []);
+
+	useEffect(() => {
+		if (!emblaApi) return;
+
+		updateSlidesInView(emblaApi);
+		emblaApi.on("slidesInView", updateSlidesInView);
+		emblaApi.on("reInit", updateSlidesInView);
+	}, [emblaApi, updateSlidesInView]);
+
 	return (
 		<div className={` relative ${className}`}>
 			<section className="embla">
@@ -33,8 +56,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					<div className="embla__container ">
 						{slides.map((slide, index) => (
 							<div className="embla__slide" key={index}>
-								{template && template(slide, index)}{" "}
 								{/* 使用 template 函數渲染內容 */}
+								<div className="embla__lazy-load">
+									{slidesInView.includes(index) && (
+										<div className="embla__lazy-load__img">
+											{template && template(slide, index)}{" "}
+										</div>
+									)}
+								</div>
 							</div>
 						))}
 					</div>

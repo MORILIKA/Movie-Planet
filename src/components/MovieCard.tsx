@@ -33,9 +33,9 @@ const MovieCardHorizontal = ({
 							priority={priority}
 							radius="none"
 							className="object-cover"
-							sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
+							sizes="(max-width: 768px) 185, (max-width: 1200px) 342, 342"
 							quality={80}
-							src={imageTMDB({ src: movie.poster_path, width: 400 })}
+							src={imageTMDB({ src: movie.poster_path, width: 342 })}
 						/>
 					)}
 				</div>
@@ -91,9 +91,9 @@ const MovieCardVertical = ({
 								priority={priority}
 								radius="none"
 								className="object-cover"
-								sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
+								sizes="(max-width: 768px) 185, (max-width: 1200px) 342, 342"
 								quality={75}
-								src={imageTMDB({ src: movie?.poster_path, width: 400 })}
+								src={imageTMDB({ src: movie?.poster_path, width: 342 })}
 							/>
 						</div>
 					)}
@@ -108,9 +108,9 @@ const MovieCardVertical = ({
 								priority={priority}
 								radius="none"
 								className="object-cover"
-								sizes="(max-width: 768px) 400, (max-width: 1200px) 400, 400"
+								sizes="(max-width: 768px) 300, (max-width: 1200px) 300, 300"
 								quality={75}
-								src={imageTMDB({ src: movie.backdrop_path, width: 400 })}
+								src={imageTMDB({ src: movie.backdrop_path, width: 300 })}
 							/>
 						</div>
 					)}
