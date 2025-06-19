@@ -52,6 +52,7 @@ export default function UpComing() {
 										<MovieCardVertical
 											movie={movieSlide}
 											isLoading={isLoading}
+											priority={false}
 											onPress={() => goToDetailPage(movieSlide.id)}
 										/>
 										<FavoriteButton

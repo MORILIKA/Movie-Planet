@@ -71,7 +71,7 @@ export default function IndexPage() {
 						slides={movies as Movie[]}
 						options={carouselOptions}
 						className="movie-carousel"
-						template={(slide) => {
+						template={(slide, index) => {
 							const movieSlide = slide as Movie;
 							return (
 								<>
@@ -79,7 +79,7 @@ export default function IndexPage() {
 										<MovieCardVertical
 											movie={movieSlide}
 											isLoading={isLoading}
-											priority={true}
+											priority={index <= 5}
 											onPress={() => goToDetailPage(movieSlide.id)}
 										/>
 

@@ -10,7 +10,7 @@ import useEmblaCarousel from "embla-carousel-react";
 type PropType<T = unknown> = {
 	slides: Array<T>; // 使用泛型 T，預設為 any，支援多種資料類型
 	options?: EmblaOptionsType;
-	template?: (slide: T) => React.ReactNode; // 使用泛型 T，確保 template 函數的類型一致
+	template?: (slide: T, index: number) => React.ReactNode; // 使用泛型 T，確保 template 函數的類型一致
 	className?: string; // 新增 className 屬性
 	[key: string]: unknown; // 允許其他屬性
 };
@@ -33,7 +33,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 					<div className="embla__container ">
 						{slides.map((slide, index) => (
 							<div className="embla__slide" key={index}>
-								{template && template(slide)} {/* 使用 template 函數渲染內容 */}
+								{template && template(slide, index)}{" "}
+								{/* 使用 template 函數渲染內容 */}
 							</div>
 						))}
 					</div>

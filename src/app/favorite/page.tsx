@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { tmdbFetcher } from "@/apis/api";
 import { MovieCardHorizontal } from "@/components/MovieCard";
 import FavoriteButton from "@/components/FavoriteButton";
@@ -54,21 +54,23 @@ const FavoritePage = () => {
 	const goToDetailPage = (movieId: number) => {
 		router.push(`/movie/${movieId}`);
 	};
-	const sortedMovies = [...movies].sort((a, b) => {
-		if (sortKey === "joinAt") {
-			return (
-				new Date(a.joinAt || 0).getTime() - new Date(b.joinAt || 0).getTime()
-			);
-		} else if (sortKey === "title") {
-			return a.title.localeCompare(b.title);
-		} else if (sortKey === "release_date") {
-			return (
-				new Date(a.release_date || "").getTime() -
-				new Date(b.release_date || "").getTime()
-			);
-		}
-		return 0;
-	});
+	const sortedMovies = useMemo(() => {
+		return [...movies].sort((a, b) => {
+			if (sortKey === "joinAt") {
+				return (
+					new Date(a.joinAt || 0).getTime() - new Date(b.joinAt || 0).getTime()
+				);
+			} else if (sortKey === "title") {
+				return a.title.localeCompare(b.title);
+			} else if (sortKey === "release_date") {
+				return (
+					new Date(a.release_date || "").getTime() -
+					new Date(b.release_date || "").getTime()
+				);
+			}
+			return 0;
+		});
+	}, [movies, sortKey]);
 	const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setSortKey(e.target.value);
 	};

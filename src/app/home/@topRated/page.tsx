@@ -52,6 +52,7 @@ export default function TopRated() {
 										<MovieCardVertical
 											movie={movieSlide}
 											isLoading={isLoading}
+											priority={false}
 											onPress={() => goToDetailPage(movieSlide.id)}
 										/>
 										<FavoriteButton

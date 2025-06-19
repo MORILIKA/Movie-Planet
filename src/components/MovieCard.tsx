@@ -82,7 +82,6 @@ const MovieCardVertical = ({
 				<div className="w-[100%] relative overflow-hidden">
 					{movie?.poster_path && imageType === "poster" && (
 						<div className="w-full pb-[150%] relative">
-							{movie?.poster_path}
 							<Image
 								as={NextImage}
 								isZoomed

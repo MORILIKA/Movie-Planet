@@ -53,6 +53,7 @@ export default function PlayNow() {
 										<MovieCardVertical
 											movie={movieSlide}
 											isLoading={isLoading}
+											priority={false}
 											onPress={() => goToDetailPage(movieSlide.id)}
 										/>
 										<FavoriteButton
