@@ -9,7 +9,7 @@ import { MovieCardHorizontal } from "@/components/MovieCard";
 import { ScrollShadow } from "@heroui/scroll-shadow";
 import { Button } from "@heroui/button";
 import { Spinner } from "@heroui/spinner";
-import Icons from "@/components/Icons";
+// import Icons from "@/components/Icons";
 import FavoriteButton from "@/components/FavoriteButton";
 
 interface Movie {
@@ -199,7 +199,7 @@ export default function SearchPage() {
 				variant="faded"
 				onPress={scrollToTop}
 			>
-				<Icons name="keyboard_arrow_up" />
+				{/* <Icons name="keyboard_arrow_up" /> */}
 			</Button>
 		</div>
 	);

@@ -36,7 +36,7 @@ export interface Review {
 	created_at: string;
 	updated_at: string;
 }
-
+// 影片基本資料
 export interface Video {
 	id: string;
 	key: string;

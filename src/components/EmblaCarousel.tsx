@@ -15,8 +15,6 @@ type PropType<T = unknown> = {
 	[key: string]: unknown; // 允許其他屬性
 };
 
-// const LAZY_LOAD_THRESHOLD = 0.4;
-
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options, template, className } = props; // 接收 className
 	const [emblaRef, emblaApi] = useEmblaCarousel(options);

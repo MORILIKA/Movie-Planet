@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 	compress: true,
 	images: {
 		remotePatterns: [new URL(`https://image.tmdb.org/**`)],
-		unoptimized: true,
+		unoptimized: false,
 	},
 };
 
